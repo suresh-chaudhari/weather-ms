@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: loyaltyone-ms
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+
+mysql:
+  datasource:
+    #change ip localhost or mysql ip instead of 192.168.99.100
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: admin@123
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+#this will use for server monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "metrics,health,threaddump,prometheus,heapdump"

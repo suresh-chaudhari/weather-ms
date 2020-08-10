@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@123
+      MYSQL_DATABASE: demo
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: admin@123
