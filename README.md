@@ -4,12 +4,6 @@ Loyalty-One Service
 
 ``` Java
 
-Following things are implemented: 	
-    a. Product insert, delete, update and fetch operation
-    b. Manage the news in a database
-    c. Created Dockrefile to make containerization application
-
-
 Run project:
 
 1. If you have not installed a mysql on your machine, you can use docker-compose.yml file to start mysql on docker engine
@@ -36,75 +30,32 @@ Note: Please update the mysql IP in application.yaml file. It will written as lo
 	
 Mysql database schema:
 
-mysql> describe product;
-+----------+------------------+------+-----+---------+----------------+
-| Field    | Type             | Null | Key | Default | Extra          |
-+----------+------------------+------+-----+---------+----------------+
-| id       | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-| pname    | varchar(45)      | NO   |     | NULL    |                |
-| quantity | int(10) unsigned | NO   |     | NULL    |                |
-+----------+------------------+------+-----+---------+----------------+
-3 rows in set (0.00 sec)
+mysql> describe post;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| post_id      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| city         | varchar(255) | YES  |     | NULL    |                |
+| content      | text         | NO   |     | NULL    |                |
+| created_date | datetime     | YES  |     | NULL    |                |
+| latitude     | float        | YES  |     | NULL    |                |
+| longitude    | float        | YES  |     | NULL    |                |
+| temperature  | float        | YES  |     | NULL    |                |
+| username     | varchar(255) | NO   |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
 
 
-
-Request URL: POST /v1/api/product
-Content-Type : application/json
-
-Request Payload:
-{
-   "productName": "Mouse",
-   "quantity": 1
-}
-
-Response For:
-{
-    "message": "Congratulations ! Data inserted successfully."
-}
+mysql> describe reply_post;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| reply_post_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| comment       | varchar(255) | NO   |     | NULL    |                |
+| created_date  | datetime     | YES  |     | NULL    |                |
+| post_id       | int(11)      | YES  |     | NULL    |                |
+| username      | varchar(255) | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
 
 
-
-Request URL: GET /v1/api/product
-Content-Type : application/json
-
-Response For :
-
-[
-    {
-        "id": 1,
-        "productName": "Mouse",
-        "quantity": 1
-    },
-    {
-        "id": 2,
-        "productName": "Keyboard",
-        "quantity": 4
-    }
-]
-
-
-
-Request URL: UPDATE /v1/api/product/{id}
-Content-Type : application/json
-Request Payload:
-{
-   "productName": "Mouse-Updated",
-   "quantity": 2
-}
-
-Response For:
-{
-    "message": "Congratulations ! Data updated successfully."
-}
-
-
-
-Request URL: DELETE /v1/api/product/{id}
-Content-Type : application/json
-
-Response For:
-{
-    "message": "Congratulations ! Data deleted successfully."
-}
 
 ```
