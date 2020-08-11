@@ -1,6 +1,6 @@
 package com.loyalty.one.service;
 
-import com.loyalty.one.repository.LoyaltyRepository;
+import com.loyalty.one.repository.PostRepository;
 import org.junit.Before;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -8,13 +8,13 @@ import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 
-public class LoyaltyServiceTest {
+public class PostServiceTest {
 
     @InjectMocks
-    private LoyaltyService productService;
+    private PostService productService;
 
     @Mock
-    private LoyaltyRepository loyaltyRepository;
+    private PostRepository loyaltyRepository;
 
     @Before
     public void setUp() {

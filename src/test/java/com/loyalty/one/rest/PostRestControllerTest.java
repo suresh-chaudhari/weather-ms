@@ -1,6 +1,6 @@
 package com.loyalty.one.rest;
 
-import com.loyalty.one.service.LoyaltyService;
+import com.loyalty.one.service.PostService;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -13,15 +13,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 
-public class LoyaltyRestControllerTest {
+public class PostRestControllerTest {
 
     private MockMvc mockMvc;
 
     @InjectMocks
-    private LoyaltyRestController loyaltyRestController;
+    private PostRestController loyaltyRestController;
 
     @Mock
-    private LoyaltyService productService;
+    private PostService productService;
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

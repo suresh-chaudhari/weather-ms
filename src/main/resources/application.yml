@@ -6,7 +6,13 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
-
+  cache:
+    type: redis
+    redis:
+      time-to-live: 300000
+  redis:
+    host: 192.168.99.100
+    port:  6379
 
 mysql:
   datasource:
@@ -16,6 +22,9 @@ mysql:
     password: admin@123
     driver-class-name: com.mysql.jdbc.Driver
 
+weather-api:
+  url: https://api.openweathermap.org/data/2.5/weather
+  appKey: be80e05ba26c537e5d6111ad81fb5127
 
 #this will use for server monitoring
 management:

@@ -11,8 +11,14 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ErrorResponseCodes {
 
-    BAD_REQUEST(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getReasonPhrase(),
-            ErrorResponseCodes.VALIDATION_ERROR, "Please Enter Product and Quantity"),
+    BAD_REQUEST_POST(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getReasonPhrase(),
+            ErrorResponseCodes.VALIDATION_ERROR, "Please enter username, content and city."),
+
+    BAD_REQUEST_REPLY_POST(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getReasonPhrase(),
+            ErrorResponseCodes.VALIDATION_ERROR, "Please enter comment and username"),
+
+    UNPROCESSABLE_ENTITY_POST_ID(HttpStatus.UNPROCESSABLE_ENTITY, HttpStatus.UNPROCESSABLE_ENTITY.getReasonPhrase(),
+            ErrorResponseCodes.DATABASE_ERROR, "Post is not exist in database."),
 
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
             ErrorResponseCodes.SYSTEM_ERROR, "Unexpected Error");
@@ -27,5 +33,6 @@ public enum ErrorResponseCodes {
      */
     public static final String SYSTEM_ERROR = "SYSTEM";
     public static final String VALIDATION_ERROR = "VALIDATION";
+    public static final String DATABASE_ERROR = "DATABASE";
 
 }
