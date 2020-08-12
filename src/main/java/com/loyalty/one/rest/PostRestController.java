@@ -8,6 +8,7 @@ import com.loyalty.one.service.PostService;
 import com.loyalty.one.utils.RequestValidatorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,4 +72,16 @@ public class PostRestController {
         return postService.getAllReplyByPostId(postId);
     }
 
+    /**
+     * To get all posts from database.
+     *
+     * Note: First time it will hit the database to fetch the replied post by post id and when you make request again it will fetch the data from
+     * redis cache
+     *
+     */
+    @DeleteMapping(value = "/post/{postId}/reply/{replyId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void getReplyByPostId(@PathVariable int postId, @PathVariable int replyId) {
+        postService.deleteReplyPostById(postId, replyId);
+    }
 }

@@ -106,6 +106,14 @@ public class PostService {
         }.getType());
     }
 
+    /**
+     * It deletes reply for given post Id and given reply Id
+     *
+     */
+    public void deleteReplyPostById(int postId, int replyId) {
+        replyRepository.deleteReplyByPostIdAndReplyId(replyId, postId);
+    }
+
 
     /**
      * It creates post response object which stored in database.

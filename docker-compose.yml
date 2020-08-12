@@ -20,3 +20,12 @@ services:
     hostname: dockermachine
     ports:
       - 6379:6379
+
+  loyaltyone-ms:
+    image: loyaltyone-ms
+    container_name: loyaltyone-ms
+    hostname: dockermachine
+    volumes:
+      - /var/log/loyaltyone-ms:/var/log/loyaltyone-ms
+    ports:
+      - 10100:8080
