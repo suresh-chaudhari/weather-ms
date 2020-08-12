@@ -9,7 +9,8 @@ spring:
   cache:
     type: redis
     redis:
-      time-to-live: 300000
+      #in milliseconds TTL 30*1000=30s
+      time-to-live: 30000
   redis:
     host: 192.168.99.100
     port:  6379
