@@ -41,3 +41,6 @@ management:
     web:
       exposure:
         include: "metrics,health,threaddump,prometheus,heapdump"
+
+#Generate PKCS12 self signed certificate
+#  "C:\Program Files\Java\jdk1.8.0_261\bin\keytool.exe" -genkeypair -alias keystore -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 365
