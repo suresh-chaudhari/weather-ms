@@ -15,10 +15,18 @@ spring:
     host: 192.168.99.100
     port:  6379
 
+server:
+  port: 8443
+  ssl:
+    key-store-type: PKCS12
+    key-store: C:\Projects\LoyaltyOne\loyaltyone-ms\src\main\resources\keystore\keystore.p12
+    key-store-password: keystorepass
+    key-alias: keystore
+
 mysql:
   datasource:
     #change ip localhost or mysql ip instead of 192.168.99.100
-    url: jdbc:mysql://192.168.99.100:3306/demo
+    url: jdbc:mysql://192.168.99.100:3306/demo?useSSL=false
     username: root
     password: admin@123
     driver-class-name: com.mysql.jdbc.Driver
