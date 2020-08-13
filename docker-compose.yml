@@ -28,4 +28,4 @@ services:
     volumes:
       - /var/log/loyaltyone-ms:/var/log/loyaltyone-ms
     ports:
-      - 10100:8080
+      - 8443:8443
