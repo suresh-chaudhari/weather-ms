@@ -41,7 +41,8 @@ Docker IP: 192.168.99.100
  
    mvn clean package docker:build
     
-
+   Note: Created loyaltyone docker image URL on docker hub repository : https://hub.docker.com/repository/docker/sureshchaudhari/loyaltyone-ms 
+ 
 4. Deploy this application on Docker Container:
 
     You need to change application.yaml file. Comment the keystore related property on file. You can create docker image by using above command. (3 steps)
