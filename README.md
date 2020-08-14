@@ -53,7 +53,38 @@ Docker IP: 192.168.99.100
     Note: It will start server by default on 8080 port and if you want to test the exposed endpoint you can use swagger page to hit the endpoint
      You can access swagger page on http://localhost:8080/swagger-ui.html
 
-	
+
+``` 
+###### Deployment on Kubernetes (Minikube)
+``` Java
+    To deploy this application on minikube/kubernetes. You need to run below command. First command will deploy mysql server and redis server
+    in single POD. Once this pod is up. Run the second command. This command will deploy the loyaltyone-ms image file which is already pushed
+    on docker hub.
+
+    1. kubectl apply -f kubernetes/mysql-redis/
+   
+    2. kubectl apply -f kubernetes/app/
+ 
+You can verify deployed pods and services using below command
+
+C:\Projects\LoyaltyOne\loyaltyone-ms>kubectl get pods -n development
+NAME                                       READY   STATUS    RESTARTS   AGE
+database-mysql-redis-ms-7bf4dc94c6-mc6t2   2/2     Running   2          62m
+loyaltyone-api-ms-7cb4f4f884-6p25b         1/1     Running   0          11m
+
+C:\Projects\LoyaltyOne\loyaltyone-ms>kubectl get services -n development
+NAME                      TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+database-mysql-redis-ms   NodePort   10.100.173.255   <none>        3306:30414/TCP,6379:30022/TCP   49m
+loyaltyone-api-ms         NodePort   10.99.187.136    <none>        8080:31583/TCP                  11m
+
+
+Note: To check endpoint of loyalyone-ms, you can use swagger page below URL. Kubernetes will always exposed service on new port for outside.
+Here it is exposed on 31583 port.
+
+http://192.168.99.102:31583/swagger-ui.html
+```
+
+``` Java 	
 Mysql database schema:
 
 mysql> describe post;
