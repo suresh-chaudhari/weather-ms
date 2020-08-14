@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loyaltyone-api-ms-application-config
+  namespace: development
+  labels:
+    app: loyaltyone-api
+    environment: development
+    tier: backend
+data:
+  application.properties: |-
+
+    spring.application.name=loyaltyone-ms
+
+    spring.cache.type=redis
+    spring.cache.redis.time-to-live=30000
+
+    spring.redis.host=192.168.99.100
+    spring.redis.port=6379
+
+    mysql.datasource.url=jdbc:mysql://192.168.99.100:3306/demo
+    mysql.datasource.username=root
+    mysql.datasource.password=admin@123
+    mysql.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+    weather-api.url=https://api.openweathermap.org/data/2.5/weather
+    weather-api.appKey=be80e05ba26c537e5d6111ad81fb5127
+

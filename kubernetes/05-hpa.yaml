@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: loyaltyone-api-ms
+  namespace: development
+  labels:
+    app: loyaltyone-api
+    environment: development
+spec:
+  maxReplicas: 5
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: loyaltyone-api-ms
+  targetCPUUtilizationPercentage: 350

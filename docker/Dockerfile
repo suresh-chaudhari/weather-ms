@@ -10,7 +10,7 @@ COPY loyaltyone-ms.jar /app
 
 RUN chown -R loyaltyone-ms /app
 
-EXPOSE 8080
+EXPOSE 8080 8443
 
 USER loyaltyone-ms
 

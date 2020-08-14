@@ -1,0 +1,65 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: loyaltyone-api
+    environment: development
+    tier: backend
+  name: loyaltyone-api-ms
+  namespace: development
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: loyaltyone-api
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 33%
+      maxSurge: 100%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        environment: development
+        app: loyaltyone-api
+        tier: backend
+    spec:
+      serviceAccountName: loyaltyone-api-ms
+      containers:
+      - name: application
+        image: sureshchaudhari/loyaltyone-ms:1.0.0
+        env:
+        - name: LOCATION_CONFIG
+          value: file:config/,classpath:/config/
+        ports:
+        - containerPort: 8080
+          name: api
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 300
+          periodSeconds: 5
+          timeoutSeconds: 20
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 300
+          periodSeconds: 5
+          timeoutSeconds: 20
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 700m
+            memory: 720Mi
+        volumeMounts:
+        - mountPath: /app/config
+          name: application-config
+      volumes:
+      - name: application-config
+        configMap:
+          name: loyaltyone-api-ms-application-config
