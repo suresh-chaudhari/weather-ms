@@ -19,7 +19,7 @@ public class ReplyPostDao implements Serializable {
     @Column(name = "reply_post_id")
     private Integer replyPostId;
 
-    @Column(name = "comment")
+    @Column(columnDefinition="TEXT")
     @NotNull
     private String comment;
 
@@ -31,7 +31,6 @@ public class ReplyPostDao implements Serializable {
     private Date createdDate = new Date();
 
     @Column(name = "post_id")
-//    @NotNull
     private Integer postId;
 
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)

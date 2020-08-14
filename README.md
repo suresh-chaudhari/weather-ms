@@ -35,14 +35,26 @@ mysql> describe post;
 | Field        | Type         | Null | Key | Default | Extra          |
 +--------------+--------------+------+-----+---------+----------------+
 | post_id      | int(11)      | NO   | PRI | NULL    | auto_increment |
-| city         | varchar(255) | YES  |     | NULL    |                |
+| city         | varchar(255) | NO   |     | NULL    |                |
 | content      | text         | NO   |     | NULL    |                |
 | created_date | datetime     | YES  |     | NULL    |                |
-| latitude     | float        | YES  |     | NULL    |                |
-| longitude    | float        | YES  |     | NULL    |                |
-| temperature  | float        | YES  |     | NULL    |                |
+| latitude     | float        | NO   |     | NULL    |                |
+| longitude    | float        | NO   |     | NULL    |                |
+| temperature  | float        | NO   |     | NULL    |                |
 | username     | varchar(255) | NO   |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
+
+mysql> describe reply_post;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| reply_post_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| comment       | text         | NO   |     | NULL    |                |
+| created_date  | datetime     | YES  |     | NULL    |                |
+| post_id       | int(11)      | NO   |     | NULL    |                |
+| username      | varchar(255) | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+
 
 
 mysql> describe reply_post;

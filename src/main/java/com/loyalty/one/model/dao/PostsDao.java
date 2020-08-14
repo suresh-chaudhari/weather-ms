@@ -28,15 +28,19 @@ public class PostsDao implements Serializable {
     private String content;
 
     @Column(name = "city")
+    @NotNull
     private String city;
 
     @Column(name = "latitude")
+    @NotNull
     private Float latitude;
 
     @Column(name = "longitude")
+    @NotNull
     private Float longitude;
 
     @Column(name = "temperature")
+    @NotNull
     private Float temperature;
 
     @Column(name = "created_date")
