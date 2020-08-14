@@ -5,8 +5,9 @@ Loyalty-One Service
 ``` Java
 
 Following things are implemented: 	
-    a. Connect to an API to retrieve a a Weather information by city name
-    b. Manage the a database store post and user information, reply post information
+    a. Spring Boot application.
+    a. Imlemented OpeaWeather API for add Weather information by city name
+    b. Manage the a database store , post ,reply and user data
     c. Use Redis to introduce a caching layer
     d. Secured application with https
     e. Docker containerization 
@@ -61,13 +62,14 @@ mysql> describe post;
 +--------------+--------------+------+-----+---------+----------------+
 | post_id      | int(11)      | NO   | PRI | NULL    | auto_increment |
 | city         | varchar(255) | NO   |     | NULL    |                |
+| username     | varchar(255) | NO   |     | NULL    |                |
 | content      | text         | NO   |     | NULL    |                |
-| created_date | datetime     | YES  |     | NULL    |                |
 | latitude     | float        | NO   |     | NULL    |                |
 | longitude    | float        | NO   |     | NULL    |                |
 | temperature  | float        | NO   |     | NULL    |                |
-| username     | varchar(255) | NO   |     | NULL    |                |
+| created_date | datetime     | YES  |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
+
 
 mysql> describe reply_post;
 +---------------+--------------+------+-----+---------+----------------+
@@ -87,11 +89,12 @@ mysql> describe reply_post;
 | Field         | Type         | Null | Key | Default | Extra          |
 +---------------+--------------+------+-----+---------+----------------+
 | reply_post_id | int(11)      | NO   | PRI | NULL    | auto_increment |
-| comment       | varchar(255) | NO   |     | NULL    |                |
-| created_date  | datetime     | YES  |     | NULL    |                |
-| post_id       | int(11)      | YES  |     | NULL    |                |
 | username      | varchar(255) | NO   |     | NULL    |                |
+| comment       | text         | NO   |     | NULL    |                |
+| created_date  | datetime     | YES  |     | NULL    |                |
+| post_id       | int(11)      | NO   | MUL | NULL    |                |
 +---------------+--------------+------+-----+---------+----------------+
+
 
 Create Post API:
 Request URL: POST https://localhost:8443/api/v1/post
