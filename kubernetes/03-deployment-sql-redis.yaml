@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: database-mysql-redis
+    environment: development
+    tier: backend
+  name: database-mysql-redis-ms
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database-mysql-redis
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 33%
+      maxSurge: 100%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        environment: development
+        app: database-mysql-redis
+        tier: backend
+    spec:
+      serviceAccountName: loyaltyone-api-ms
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin@123
+        - name: MYSQL_DATABASE
+          value: loyaltyone-db
+        ports:
+        - containerPort: 3306
+          name: mysql
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 700m
+            memory: 720Mi
+      - name: redis
+        image: redis
+        ports:
+          - containerPort: 6379
+            name: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 700m
+            memory: 720Mi
