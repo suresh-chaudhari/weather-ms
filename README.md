@@ -11,7 +11,7 @@ Following things are implemented:
     c. Use Redis to introduce a caching layer
     d. Secured application with https
     e. Docker containerization 
-    f. Deployment: Docker/PCF file (docker-compose.yml)(manifest.yml)
+    f. Deployment: Docker/PCF/Kubernetes file (docker-compose.yml)(manifest.yml)(kubernetes yaml files)
 
 Note: Redis caching layer is implemented for expose endpoint for /api/v1/post and /api/v1/post/{postId}/reply
       Redis will keep data in Caching for 30 seconds after that it will make query to again database and put it in cache
@@ -100,20 +100,6 @@ mysql> describe post;
 | temperature  | float        | NO   |     | NULL    |                |
 | created_date | datetime     | YES  |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
-
-
-mysql> describe reply_post;
-+---------------+--------------+------+-----+---------+----------------+
-| Field         | Type         | Null | Key | Default | Extra          |
-+---------------+--------------+------+-----+---------+----------------+
-| reply_post_id | int(11)      | NO   | PRI | NULL    | auto_increment |
-| comment       | text         | NO   |     | NULL    |                |
-| created_date  | datetime     | YES  |     | NULL    |                |
-| post_id       | int(11)      | NO   |     | NULL    |                |
-| username      | varchar(255) | NO   |     | NULL    |                |
-+---------------+--------------+------+-----+---------+----------------+
-
-
 
 mysql> describe reply_post;
 +---------------+--------------+------+-----+---------+----------------+
