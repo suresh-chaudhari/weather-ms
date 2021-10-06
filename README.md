@@ -1,5 +1,5 @@
 
-Loyalty-One Service
+Weather Service
 =============================
 
 ``` Java
@@ -41,7 +41,7 @@ Docker IP: 192.168.99.100
  
    mvn clean package docker:build
     
-   Note: Created loyaltyone docker image URL on docker hub repository : https://hub.docker.com/repository/docker/sureshchaudhari/loyaltyone-ms 
+   Note: Created weather docker image URL on docker hub repository : https://hub.docker.com/repository/docker/sureshchaudhari/weather-ms 
  
 4. Deploy this application on Docker Container:
 
@@ -59,7 +59,7 @@ Docker IP: 192.168.99.100
 ###### Deployment on Kubernetes (Minikube)
 ``` Java
     To deploy this application on minikube/kubernetes. You need to run below command. First command will deploy mysql server and redis server
-    in single POD. Once this pod is up. Run the second command. This command will deploy the loyaltyone-ms image file which is already pushed
+    in single POD. Once this pod is up. Run the second command. This command will deploy the weather-ms image file which is already pushed
     on docker hub.
 
     1. kubectl apply -f kubernetes/mysql-redis/
@@ -68,18 +68,18 @@ Docker IP: 192.168.99.100
  
 You can verify deployed pods and services using below command
 
-C:\Projects\LoyaltyOne\loyaltyone-ms>kubectl get pods -n development
+C:\Projects\weather\weather-ms>kubectl get pods -n development
 NAME                                       READY   STATUS    RESTARTS   AGE
 database-mysql-redis-ms-7bf4dc94c6-mc6t2   2/2     Running   2          62m
-loyaltyone-api-ms-7cb4f4f884-6p25b         1/1     Running   0          11m
+weather-api-ms-7cb4f4f884-6p25b         1/1     Running   0          11m
 
-C:\Projects\LoyaltyOne\loyaltyone-ms>kubectl get services -n development
+C:\Projects\weather\weather-ms>kubectl get services -n development
 NAME                      TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
 database-mysql-redis-ms   NodePort   10.100.173.255   <none>        3306:30414/TCP,6379:30022/TCP   49m
-loyaltyone-api-ms         NodePort   10.99.187.136    <none>        8080:31583/TCP                  11m
+weather-api-ms         NodePort   10.99.187.136    <none>        8080:31583/TCP                  11m
 
 
-Note: To check endpoint of loyalyone-ms, you can use swagger page below URL. Kubernetes will always exposed service on new port for outside.
+Note: To check endpoint of weather-ms, you can use swagger page below URL. Kubernetes will always exposed service on new port for outside.
 Here it is exposed on 31583 port.
 
 http://192.168.99.102:31583/swagger-ui.html

@@ -1,10 +1,10 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: loyaltyone-api-ms
+  name: weather-api-ms
   namespace: development
   labels:
-    app: loyaltyone-api
+    app: weather-api
     environment: development
 spec:
   maxReplicas: 5
@@ -12,5 +12,5 @@ spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
-    name: loyaltyone-api-ms
+    name: weather-api-ms
   targetCPUUtilizationPercentage: 350

@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.demo.ca.product</groupId>
-	<artifactId>loyaltyone-ms</artifactId>
+	<groupId>com.weather</groupId>
+	<artifactId>weather-ms</artifactId>
 	<version>${revision}</version>
 	<packaging>jar</packaging>
 
-	<name>loyaltyone-ms</name>
-	<description>Loyalty One Microservices</description>
+	<name>weather-ms</name>
+	<description>Weather Microservices</description>
 
 	<properties>
 		<revision>local-SNAPSHOT</revision>
@@ -215,7 +215,7 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<configuration>
-					<imageName>loyaltyone-ms</imageName>
+					<imageName>weather-ms</imageName>
 					<dockerDirectory>docker</dockerDirectory>
 					<resources>
 						<resource>

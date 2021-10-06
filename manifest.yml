@@ -1,7 +1,7 @@
 ---
 applications:
-  - name: loyaltyone-ms
+  - name: weather-ms
     memory: 512M
     instances: 1
     buildpack: https://github.com/cloudfoundry/java-buildpack
-    path: target/loyaltyone-ms.jar
+    path: target/weather-ms.jar

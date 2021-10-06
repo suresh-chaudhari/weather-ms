@@ -21,12 +21,12 @@ services:
     ports:
       - 6379:6379
 
-  loyaltyone-ms:
-    image: loyaltyone-ms
-    container_name: loyaltyone-ms
+  weather-ms:
+    image: weather-ms
+    container_name: weather-ms
     hostname: dockermachine
     volumes:
-      - /var/log/loyaltyone-ms:/var/log/loyaltyone-ms
+      - /var/log/weather-ms:/var/log/weather-ms
     ports:
       - 8443:8443
       - 8080:8080

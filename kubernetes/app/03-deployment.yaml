@@ -3,16 +3,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: loyaltyone-api
+    app: weather-api
     environment: development
     tier: backend
-  name: loyaltyone-api-ms
+  name: weather-api-ms
   namespace: development
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: loyaltyone-api
+      app: weather-api
   strategy:
     rollingUpdate:
       maxUnavailable: 33%
@@ -22,13 +22,13 @@ spec:
     metadata:
       labels:
         environment: development
-        app: loyaltyone-api
+        app: weather-api
         tier: backend
     spec:
-      serviceAccountName: loyaltyone-api-ms
+      serviceAccountName: weather-api-ms
       containers:
       - name: application
-        image: sureshchaudhari/loyaltyone-ms:1.0.0
+        image: sureshchaudhari/weather-ms:1.0.0
         env:
         - name: LOCATION_CONFIG
           value: file:config/,classpath:/config/
@@ -62,4 +62,4 @@ spec:
       volumes:
       - name: application-config
         configMap:
-          name: loyaltyone-api-ms-application-config
+          name: weather-api-ms-application-config

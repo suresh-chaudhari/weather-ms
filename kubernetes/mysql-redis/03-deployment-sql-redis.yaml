@@ -25,7 +25,7 @@ spec:
         app: database-mysql-redis
         tier: backend
     spec:
-      serviceAccountName: loyaltyone-api-ms
+      serviceAccountName: weather-api-ms
       containers:
       - name: mysql
         image: mysql:5.7
@@ -33,7 +33,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           value: admin@123
         - name: MYSQL_DATABASE
-          value: loyaltyone-db
+          value: weather-db
         ports:
         - containerPort: 3306
           name: mysql
